@@ -9,31 +9,28 @@ A simple Django web application that allows users to download videos from variou
 - Provides download links after video is downloaded.
 - Written in Python using Django.
 
-## Prerequisites
 
-Before running the project, make sure you have the following installed:
-
-- Python (>= 3.6)
-- pip (Python package installer)
-
-### Install Python dependencies
-
-To set up the project and install dependencies, follow these steps:
 
 1. **Clone the repository** or download the code.
-2. **Navigate to your project directory**.
+
+2. Clone the Repository: Use the git clone command followed by the repository URL.
+    ```bash
+    git clone https://github.com/alirezz2020/Videodownloader.git
+
+4. 
+5. **Navigate to your project directory**.
 
     ```bash
-    cd your_project_directory
+    cd path (Videodownloader)
     ```
 
-3. **Create a virtual environment** (recommended):
+6. **Create a virtual environment** (recommended):
 
     ```bash
     python -m venv venv
     ```
 
-4. **Activate the virtual environment**:
+7. **Activate the virtual environment**:
 
     - On Windows:
         ```bash
@@ -45,7 +42,7 @@ To set up the project and install dependencies, follow these steps:
         source venv/bin/activate
         ```
 
-5. **Install the required dependencies**:
+8. **Install the required dependencies**:
 
     ```bash
     pip install -r requirements.txt
