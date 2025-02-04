@@ -51,34 +51,21 @@ To set up the project and install dependencies, follow these steps:
     pip install -r requirements.txt
     ```
 
-    If you don't have a `requirements.txt`, manually install the dependencies:
+    
 
     ```bash
     pip install django yt-dlp
     ```
 
-## Setup
+Run migrations to set up the database:
+    python manage.py migrate
 
-### 1. Create the Django Project and App
 
-- Run the following command to create a Django project:
+Start the development server:
+    python manage.py runserver
 
-    ```bash
-    django-admin startproject video_downloader
-    cd video_downloader
-    python manage.py startapp downloader
+Visit http://127.0.0.1:8000/ in your browser.
     ```
 
-### 2. Configure Static and Media Directories
-
-In the `settings.py` of your Django project:
-
-- Set the `STATIC_URL` and `MEDIA_URL` variables for serving static and media files.
-
-```python
-import os
-
-STATIC_URL = '/static/'
-
-MEDIA_URL = '/downloads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'downloads')
+Contributing
+Feel free to fork the project and submit pull requests. Contributions are welcome to add support for additional platforms or enhance the UI/UX.
