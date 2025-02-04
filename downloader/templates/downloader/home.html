@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Video Downloader</h1>
+        <p>Enter the URL of the video you want to download:</p>
+        <form id="download-form" method="post">
+            {% csrf_token %}
+            <input type="url" id="video-url" name="url" class="form-control" placeholder="Paste YouTube/Twitter URL here" required>
+            <button type="submit" class="btn btn-primary mt-3">Download</button>
+        </form>
+
+        <div id="download-links" class="mt-4"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#download-form").submit(function (event) {
+                event.preventDefault();
+                var url = $("#video-url").val();
+                $.ajax({
+                    url: '/download',
+                    method: 'POST',
+                    data: { url: url, csrfmiddlewaretoken: '{{ csrf_token }}' },
+                    success: function(response) {
+                        if(response.download_link) {
+                            $('#download-links').html('<a href="' + response.download_link + '" class="btn btn-success">Download Video</a>');
+                        } else {
+                            $('#download-links').html('<div class="alert alert-danger">' + response.error + '</div>');
+                        }
+                    },
+                    error: function() {
+                        $('#download-links').html('<div class="alert alert-danger">Something went wrong, try again.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Video Downloader</h1>
+        <p>Enter the URL of the video you want to download:</p>
+        <form id="download-form" method="post">
+            {% csrf_token %}
+            <input type="url" id="video-url" name="url" class="form-control" placeholder="Paste YouTube/Twitter URL here" required>
+            <button type="submit" class="btn btn-primary mt-3">Download</button>
+        </form>
+
+        <div id="download-links" class="mt-4"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#download-form").submit(function (event) {
+                event.preventDefault();
+                var url = $("#video-url").val();
+                $.ajax({
+                    url: '/download',
+                    method: 'POST',
+                    data: { url: url, csrfmiddlewaretoken: '{{ csrf_token }}' },
+                    success: function(response) {
+                        if(response.download_link) {
+                            $('#download-links').html('<a href="' + response.download_link + '" class="btn btn-success">Download Video</a>');
+                        } else {
+                            $('#download-links').html('<div class="alert alert-danger">' + response.error + '</div>');
+                        }
+                    },
+                    error: function() {
+                        $('#download-links').html('<div class="alert alert-danger">Something went wrong, try again.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
